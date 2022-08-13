@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://System/Dialog.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Dialog" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 132.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+visible_characters = 0
+percent_visible = 0.0
+text = "Well just checking how this works and if it works and what not?"
+scroll_active = false
+
+[node name="EndSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 228.5, 74.5 )
+scale = Vector2( 0.171875, 0.171875 )
+frames = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

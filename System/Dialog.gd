@@ -6,21 +6,21 @@ onready var end_sprite = $EndSprite
 onready var question_box = $QuestionBox
 onready var selection_sprite = $QuestionBox/SelectionSprite
 
-var is_question := false
-var question_answer := true
+var isQuestion := false
+var questionAnswer := true
 var confirm := ""
 var deny := ""
 
 func message(text):
 	rich_text_label.percent_visible = 0
 	rich_text_label.text = text
-	is_question = false
+	isQuestion = false
 	timer.start()
 
 func question(text, yes_reply, no_reply):
 	rich_text_label.percent_visible = 0
 	rich_text_label.text = text
-	is_question = true
+	isQuestion = true
 	confirm = yes_reply
 	deny = no_reply
 	timer.start()
@@ -34,11 +34,11 @@ func _input(event):
 			rich_text_label.percent_visible = 1
 			end_statement()
 		
-		elif is_question == false and rich_text_label.percent_visible == 1:
+		elif isQuestion == false and rich_text_label.percent_visible == 1:
 			self.queue_free()\
 		
-		elif is_question == true and question_box.visible == true and rich_text_label.percent_visible == 1:
-			if question_answer == true:
+		elif isQuestion == true and question_box.visible == true and rich_text_label.percent_visible == 1:
+			if questionAnswer == true:
 				message(confirm)
 			else:
 				message(deny)
@@ -59,13 +59,13 @@ func _on_Timer_timeout():
 func selection_state():
 	if int(selection_sprite.position.y) % 45 < 15:
 		selection_sprite.position.y = 45
-		question_answer = false
+		questionAnswer = false
 	else:
 		selection_sprite.position.y = 15
-		question_answer = true
+		questionAnswer = true
 
 func end_statement():
-	if is_question == true:
+	if isQuestion == true:
 		question_box.visible = true
 	else:
 		end_sprite.visible = true

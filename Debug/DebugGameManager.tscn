@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Debug/DebugMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://System/Dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Debug/DebugGameManager.gd" type="Script" id=3]
+
+[node name="DebugGameManager" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="DebugMap" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -1 )
+
+[node name="Dialog" parent="." instance=ExtResource( 2 )]

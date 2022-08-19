@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "WindowClass",
+"language": "GDScript",
+"path": "res://System/Window.gd"
+} ]
+_global_script_class_icons={
+"WindowClass": ""
+}
+
 [application]
 
 config/name="Life Sim Name Pending"
